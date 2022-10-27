@@ -1,0 +1,19 @@
+name: Distribute build to PyPi Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Bump versions
+        uses: remorses/bump-version@js
+        with:
+            version_file: ./VERSION
+            prerelease_tag: alpha
+            ignore: dist, ignored_folder
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
