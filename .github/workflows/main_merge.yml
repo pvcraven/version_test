@@ -1,4 +1,4 @@
-name: Distribute build to PyPi Test
+name: Bump Version Number
 
 on:
   workflow_dispatch:
@@ -8,12 +8,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment: development
+
     steps:
+      - uses: actions/checkout@v1
+      # See https://github.com/marketplace/actions/bump-versions
       - name: Bump versions
         uses: remorses/bump-version@js
         with:
             version_file: ./VERSION
-            prerelease_tag: alpha
-            ignore: dist, ignored_folder
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
