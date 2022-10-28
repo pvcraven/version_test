@@ -16,6 +16,6 @@ jobs:
       - name: Bump versions
         uses: remorses/bump-version@js
         with:
-            version_file: ./VERSION.py
+            version_file: ./VERSION
         env:
             GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
